@@ -29,10 +29,12 @@ public class BaSyxAASServerConfiguration extends BaSyxConfiguration {
 	public static final String DEFAULT_BACKEND = AASServerBackend.INMEMORY.toString();
 	public static final String DEFAULT_SOURCE = "";
 	public static final String DEFAULT_REGISTRY = "";
+	public static final String DEFAULT_REGISTRY_TYPE = "basyx";
 	public static final String DEFAULT_EVENTS = AASEventBackend.NONE.toString();
 
 	// Configuration keys
 	public static final String REGISTRY = "registry.path";
+	public static final String REGISTRY_TYPE = "registry.type";
 	public static final String BACKEND = "aas.backend";
 	public static final String SOURCE = "aas.source";
 	public static final String EVENTS = "aas.events";
@@ -48,6 +50,7 @@ public class BaSyxAASServerConfiguration extends BaSyxConfiguration {
 		defaultProps.put(BACKEND, DEFAULT_BACKEND);
 		defaultProps.put(SOURCE, DEFAULT_SOURCE);
 		defaultProps.put(REGISTRY, DEFAULT_REGISTRY);
+		defaultProps.put(REGISTRY_TYPE, DEFAULT_REGISTRY_TYPE);
 		defaultProps.put(EVENTS, DEFAULT_EVENTS);
 		return defaultProps;
 	}
@@ -137,5 +140,11 @@ public class BaSyxAASServerConfiguration extends BaSyxConfiguration {
 
 	public void setRegistry(String registryPath) {
 		setProperty(REGISTRY, registryPath);
+	}
+
+	public String getRegistryType() {return getProperty(REGISTRY_TYPE);	}
+
+	public void setRegistryType(String registryType) {
+		setProperty(REGISTRY_TYPE, registryType);
 	}
 }

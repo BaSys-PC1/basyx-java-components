@@ -36,6 +36,7 @@ import org.eclipse.basyx.components.aas.configuration.AASServerBackend;
 import org.eclipse.basyx.components.aas.configuration.BaSyxAASServerConfiguration;
 import org.eclipse.basyx.components.aas.mongodb.MongoDBAASAggregator;
 import org.eclipse.basyx.components.aas.mqtt.MqttSubmodelAPIFactory;
+import org.eclipse.basyx.components.aas.registry.DotAASRegistryProxy;
 import org.eclipse.basyx.components.aas.servlet.AASAggregatorServlet;
 import org.eclipse.basyx.components.configuration.BaSyxConfiguration;
 import org.eclipse.basyx.components.configuration.BaSyxContextConfiguration;
@@ -264,8 +265,14 @@ public class AASServerComponent implements IComponent {
 		// Load registry url from config
 		String registryUrl = this.aasConfig.getRegistry();
 		if (registryUrl != null && !registryUrl.isEmpty()) {
-			registry = new AASRegistryProxy(registryUrl);
-			logger.info("Registry loaded at \"" + registryUrl + "\"");
+			String registrytype = this.aasConfig.getRegistryType();
+			if ("dotaas".equals(registrytype)) {
+				registry = new DotAASRegistryProxy(registryUrl);
+				logger.info("DotAASRegistry loaded at \"" + registryUrl + "\"");
+			} else { // defaulting to BaSyx AAS Registry
+				registry = new AASRegistryProxy(registryUrl);
+				logger.info("BaSyx AAS Registry loaded at \"" + registryUrl + "\"");
+			}
 		}
 	}
 
