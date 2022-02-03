@@ -4,7 +4,7 @@ FROM java:8-jdk-alpine
 # Copy built jar to image using the jar name specified in the pom.xml (JAR_FILE)
 ARG JAR_FILE
 COPY target/${JAR_FILE} /usr/share/basyxExecutable.jar
-COPY target/lib /usr/share/lib
+# COPY target/lib /usr/share/lib
 COPY src/main/resources/aas.properties /usr/share/config/aas.properties
 COPY src/main/resources/context.properties /usr/share/config/context.properties
 COPY src/test/resources/dockerMongodb.properties /usr/share/config/mongodb.properties
