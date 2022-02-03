@@ -8,6 +8,7 @@ variables:
   JAR_FILE: basyx.components.AASServer-${PROJECT_VERSION}.jar
   AAS_SERVER_PROJECT_PATH: basyx.components/basyx.components.docker/basyx.components.AASServer
   ARTIFACT: ${AAS_SERVER_PROJECT_PATH}/target/$JAR_FILE
+  MAVEN_CLI_OPTS: "-s ${CI_PROJECT_DIR}/.m2/settings.xml --batch-mode -Pgitlab"
 
 cache:
   paths:
