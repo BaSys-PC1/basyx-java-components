@@ -35,7 +35,7 @@ maven:
     - maven
   script:
     - cd basyx.components
-    - mvn $MAVEN_CLI_OPTS install -Dmaven.validate.skip=true -Dmaven.test.skip=true -Pdocker
+    - mvn $MAVEN_CLI_OPTS install -Dmaven.validate.skip=true -Dmaven.test.skip=true -Pfatjar
   artifacts:
     paths:
       - $ARTIFACT
